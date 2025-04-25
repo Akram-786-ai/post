@@ -3,7 +3,7 @@ import { Client, Databases, ID, Storage, Query } from 'appwrite'
 
 
 export class Service {
-    Client = new this.Client();
+    Client = new Client();
     databases;
     bucket;
 
@@ -114,7 +114,6 @@ export class Service {
             return await this.bucket.deleteFile(
                 fileId
             )
-            return true
 
         } catch (error) {
             console.log('Appwrite service :: getCurrentUser :: error', error);
