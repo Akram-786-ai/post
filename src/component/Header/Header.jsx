@@ -10,7 +10,7 @@ function Header() {
 
     const navigate = useNavigate()
 
-    const naItem = [
+    const navItems = [
         {
             name: "home",
             slug: "/",
@@ -24,7 +24,7 @@ function Header() {
         {
             name: "Signup",
             slug: "/signup",
-            active: authStatus,
+            active: !authStatus,
         },
         {
             name: "All Posts",
@@ -45,8 +45,8 @@ function Header() {
                         <Logo width='70px' /></Link>
                 </div>
                     <ul className=' flex ml-auto '>
-                        {naItem.map((item) =>
-                            item.active.active ? (<li key={item.name}>
+                        {navItems.map((item) =>
+                            item.active ? (<li key={item.name}>
                                 <button onClick={() => navigate(item.slug)} className=' inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'>{item.name}</button>
                             </li>) : null
                         )}

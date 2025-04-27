@@ -16,7 +16,7 @@ function PostForm({ post }) {
     })
 
     const navigate = useNavigate()
-    const userData = useSelector(state => state.user.userData)
+    const userData = useSelector((state) => state.auth.userData)
 
     const submit = async (data) => {
         if (post) {
@@ -40,7 +40,7 @@ function PostForm({ post }) {
             if (file) {
                 const fileId = file.$id
                 data.featuredImage = fileId
-                const dbPost = await appwriteService.Client.createPost({
+                const dbPost = await appwriteService.createPost({
                     ...data,
                     userId: userData.$id
                 })
@@ -76,7 +76,7 @@ function PostForm({ post }) {
             subscription.unsubscribe()
         }
 
-    }, [watch, slug, slugTransform, setValue])
+    }, [watch, slugTransform, setValue])
 
     return (
         <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">

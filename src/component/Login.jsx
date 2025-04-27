@@ -12,7 +12,7 @@ function Login() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const { register, hansdleSubmit } = useForm()
+    const { register, handleSubmit } = useForm()
 
     const [error, setError] = useState("")
     const login = async (data) => {
@@ -40,7 +40,7 @@ function Login() {
                     Don&apos; t have any account ?&nbsp;<Link to='/signup' className=' font-medium text-primary transition-all duration-200 hover:underline'>Sign Up</Link>
                 </p>
                 {error && <p className=' text-red-500 text-center '>{error}</p>}
-                <form onSubmit={hansdleSubmit(login)} className=' mt-8'>
+                <form onSubmit={handleSubmit(login)} className=' mt-8'>
                     <div className=' space-y-8'>
                         <input
                             label="Email"
@@ -49,8 +49,8 @@ function Login() {
                             {...register("email", {
                                 required: true,
                                 validate: {
-                                    matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\/\w{2,3})+$/.test(v) ||
-                                        "Email address must be a valid address",
+                                    matchPatern: (value) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
                                 }
                             })} />
                         <input
